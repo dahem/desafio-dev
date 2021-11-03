@@ -1,13 +1,13 @@
-version: '3.8'
+version: '3.3'
 
 services:
   mysqldb:
     image: mysql:5.7
     environment:
-      - MYSQL_USER=bycoders
-      - MYSQL_PASSWORD=bycoders
-      - MYSQL_ROOT_PASSWORD=bycoders
-      - MYSQL_DATABASE=db_bycoders
+      MYSQL_USER:bycoders
+      MYSQL_PASSWORD:bycoders
+      MYSQL_ROOT_PASSWORD:bycoders
+      MYSQL_DATABASE:db_bycoders
     ports:
       - "3306:3306"
     expose:
@@ -26,12 +26,6 @@ services:
       - "3003:3003"
     expose:
       - "3003"
-    environment:
-      - DB_HOST=mysqldb
-      - DB_USER=root
-      - DB_PASSWORD=bycores
-      - DB_NAME=db_bycores
-      - DB_PORT=3306
     
     networks:
       - backend
@@ -41,13 +35,6 @@ services:
   bycoders-frontend:
     depends_on:
       - bycoders-backend
-    build:
-      context: ./bycoders-frontend
-      args:
-        - REACT_APP_OAUTH_DOMAIN=dev-h37umjc3.us.auth0.com
-        - REACT_APP_OAUTH_CLIENT_ID=B5YKGOK16DnMuYZFh67uofOH2n3SiWXc
-        - REACT_APP_OAUTH_AUDIENCE=http://localhost:3000
-        - REACT_APP_BACKEND_URL=http://localhost:3003
     ports:
       - "3000:3000"
     expose:
