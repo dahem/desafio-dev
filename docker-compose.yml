@@ -4,6 +4,8 @@ services:
   mysqldb:
     image: mysql:5.7
     environment:
+      - MYSQL_USER=bycoders
+      - MYSQL_PASSWORD=bycoders
       - MYSQL_ROOT_PASSWORD=bycoders
       - MYSQL_DATABASE=db_bycoders
     ports:
