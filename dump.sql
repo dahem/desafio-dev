@@ -1,4 +1,6 @@
 
+use db_bycoders;
+
 CREATE TABLE IF NOT EXISTS `transaction_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(100) DEFAULT NULL,

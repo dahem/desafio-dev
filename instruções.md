@@ -6,7 +6,8 @@ ingresar no apos iniciado os containers:
 
 http://localhost:3000/
 
-se tiver algum porto já usado pode verificar com o comando:
+Se tiver algum porto já usado pode verificar com o comando:
 
 docker-compose ps
+
  
