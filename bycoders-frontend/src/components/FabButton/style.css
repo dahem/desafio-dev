@@ -1,0 +1,20 @@
+.fab-button {
+  width: 40px;
+  height: 40px;
+  background-color: #e25158;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+}
+
+.fab-button:hover {
+  color: white;
+  text-decoration: none;
+  background-color: #d16d72;
+  transition: all 0.5s;
+}

@@ -1,0 +1,19 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  height: 55px;
+  background-color: rgb(189, 82, 157);
+}
+
+.profile {
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  color: white;
+  font-size: 18px;
+  margin-right: 1rem;
+  text-transform: capitalize;
+}

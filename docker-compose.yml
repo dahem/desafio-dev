@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  mysqldb:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=bycores
+      - MYSQL_DATABASE=db_bycores
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    volumes:
+      - db:/var/lib/mysql
+      - "./dump.sql:/docker-entrypoint-initdb.d/1.sql"
+    networks:
+      - backend
+  
+  bycoders-backend:
+    depends_on:
+      - mysqldb
+    build: ./bycoders-backend
+    ports:
+      - "6000:6000"
+    expose:
+      - "6000"
+    environment:
+      - DB_HOST=mysqldb
+      - DB_USER=root
+      - DB_PASSWORD=bycores
+      - DB_NAME=db_bycores
+      - DB_PORT=3306
+    
+    networks:
+      - backend
+      - frontend
+
+
+  bycoders-frontend:
+    depends_on:
+      - bycoders-backend
+    build:
+      context: ./bycoders-frontend
+      args:
+        - REACT_APP_OAUTH_DOMAIN=dev-h37umjc3.us.auth0.com
+        - REACT_APP_OAUTH_CLIENT_ID=B5YKGOK16DnMuYZFh67uofOH2n3SiWXc
+        - REACT_APP_OAUTH_AUDIENCE=http://localhost:3000
+        - REACT_APP_BACKEND_URL=bycoders-backend
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    networks:
+      - frontend  
+volumes: 
+  db:
+
+networks:
+  backend:
+  frontend:
