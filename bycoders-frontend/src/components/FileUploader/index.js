@@ -60,9 +60,7 @@ function FileUploader(props) {
         showConfirmButton: false,
         timer: 1500
       });
-      setLoading(false);
     } catch (error) {
-      console.log(error);
       Swal.fire({
         icon: 'error',
         title: 'Algo deu errado, verifique os dados do arquivo',
@@ -71,6 +69,7 @@ function FileUploader(props) {
       });
     } finally {
       setSelectedFile(null);
+      setLoading(false);
     }
   };
 
